@@ -117,24 +117,56 @@ Se obtubo los siguientes datos:
 - Venta mínima: $ 209,986.25
 - Venta máxima: $ 3,818,686.45
 
-### 3. Ranking de tiendas: 
+### 3. Ranking de tiendas (Utilizando CTE): 
 
+¿Cuáles son las tiendas que generan más ingresos?
 
+```SQL
+with store_sales as (
+  select 
+    Store, 
+    sum(Weekly_Sales) as total_sales, 
+    avg(Weekly_Sales) as avg_weekly_sales
+  from walmart_sales.default.walmart_sales
+  group by Store
+)
+select 
+  store,
+  total_sales,
+  avg_weekly_sales
+from store_sales
+order by total_sales desc;
+```
 
+![IMAGEN](./picture/07.%20Ranking%20ventas.png)
 
+Conclusióm:
 
+- N° de Tienda con mayor ventas: N° 20
+- N° de Tienda con menoor ventas: N° 34
 
+### 4. Ranking de tiendas - TOP 5 (Utilizando funciones de ventana): 
 
+¿Cuál es la posición de cada tienda respecto a las demás?
 
+```SQL
+WITH RANKING AS (
+  SELECT 
+    Store,
+    round(SUM(Weekly_Sales),2) AS Total_Sales
+FROM walmart_sales.default.walmart_sales
+GROUP BY Store
+)
+SELECT 
+  store,
+  total_sales,
+  RANK() OVER (ORDER BY total_sales DESC) AS sales_rank
+FROM RANKING
+ORDER BY sales_rank
+LIMIT 5;
+```
 
-
-
-
-
-
-
-
-
+![IMAGEN](./picture/08.%20Ranking.png)
 
 
 
