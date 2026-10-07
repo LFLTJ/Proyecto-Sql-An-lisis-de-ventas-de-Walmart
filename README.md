@@ -33,6 +33,20 @@ describe walmart_sales.default.walmart_sales
 ```
 ![IMAGEN](./picture/02.%20Descripción%20de%20las%20columnas%20en%20la%20Base%20de%20Datos.png)
 
+## Tareas (Task)
+
+En este análisis se busca responder lo siguiente:
+
+  1. **Estructura**: Comprobar que la estructura de la base de datos.
+  2. **Análisis de ventas**: ¿Cuánto vendió Walmart durante todo el periodo analizado?
+  3. **Ranking de tiendas**: ¿Cuáles son las tiendas que generan más ingresos?
+  4. **Ranking de tiendas - TOP 5**: ¿Cuál es la posición de cada tienda respecto a las demás?
+  5. **Participación de cada tienda**: ¿Qué porcentaje de las ventas totales representa cada tienda?
+  6. **
+  7. **
+  8. **
+  9. **
+ 10. **
 
 ## Limpieza de datos
 Se realizará la limpieza y validación de los datos para garantizar que estén completos, consistentes y listos para el análisis.
@@ -67,24 +81,6 @@ Se realizará la limpieza y validación de los datos para garantizar que estén 
     FROM walmart_sales.default.walmart_sales;
     ```
     ![IMAGEN](./picture/04.%20Verificar%20si%20hay%20datos%20NULOS.png)
-
-## Tareas (Task)
-
-En este análisis se busca responder lo siguiente:
-
-  1. **Estructura**: Comprobar que la estructura de la base de datos.
-  2. **Análisis de ventas**: ¿Cuánto vendió Walmart durante todo el periodo analizado?
-  3. **Ranking de tiendas**: ¿Cuáles son las tiendas que generan más ingresos?
-  4. **Ranking de tiendas - TOP 5**: ¿Cuál es la posición de cada tienda respecto a las demás?
-  5. **Participación de cada tienda**: ¿Qué porcentaje de las ventas totales representa cada tienda?
-  6. **
-  7. **
-  8. **
-  9. **
- 10. **
-
-
-
 
 ## Análisis de Datos - Walmart_Sales.csv
 
