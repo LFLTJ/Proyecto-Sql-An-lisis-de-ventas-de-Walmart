@@ -168,9 +168,32 @@ LIMIT 5;
 
 ![IMAGEN](./picture/08.%20Ranking.png)
 
+### 5. Participación de cada tienda
 
+¿Qué porcentaje de las ventas totales representa cada tienda?
 
+```SQL
+with Store_Sales as (
+  select 
+    Store,
+    Round(sum(Weekly_Sales),2) as Total_sales
+  from walmart_sales.default.walmart_sales
+  group by Store
+), Company_Sales as (
+  select 
+    SUM(total_sales) as Company_Total_Sales
+  from store_sales
+  )
+  select 
+      s.store,
+      s.total_sales,
+      round ((s.total_sales / c.company_total_sales * 100),2) AS Sales_Percentage
+  from store_sales s
+  Cross join company_sales c
+  order by sales_percentage desc;
+```
 
+![IMAGEN](./picture/)
 
 
 
