@@ -184,16 +184,16 @@ with Store_Sales as (
     SUM(total_sales) as Company_Total_Sales
   from store_sales
   )
-  select 
-      s.store,
-      s.total_sales,
-      round ((s.total_sales / c.company_total_sales * 100),2) AS Sales_Percentage
-  from store_sales s
-  Cross join company_sales c
-  order by sales_percentage desc;
+select 
+    s.store,
+    s.total_sales,
+    round ((s.total_sales / c.company_total_sales * 100),2) AS Sales_Percentage
+from store_sales s
+Cross join company_sales c
+order by sales_percentage desc;
 ```
 
-![IMAGEN](./picture/)
+![IMAGEN](./picture/09.%20Porcentaje%20de%20las%20ventas%20totales%20por%20cada%20tienda.png)
 
 
 
