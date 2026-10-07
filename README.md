@@ -72,16 +72,17 @@ Se realizará la limpieza y validación de los datos para garantizar que estén 
 
 En este análisis se busca responder lo siguiente:
 
--1. *Estructura*: 
--2. **
--3. **
--4. **
--5. **
--6. **
--7. **
--8. **
--9. **
--10. **
+  1. *Estructura*: 
+  
+  2. **
+  3. **
+  4. **
+  5. **
+  6. **
+  7. **
+  8. **
+  9. **
+ 10. **
 
 
 
