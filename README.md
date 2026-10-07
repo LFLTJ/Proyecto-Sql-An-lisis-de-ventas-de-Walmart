@@ -195,9 +195,9 @@ order by sales_percentage desc;
 
 ![IMAGEN](./picture/09.%20Porcentaje%20de%20las%20ventas%20totales%20por%20cada%20tienda.png)
 
+Esto permite identificar qué tiendas tienen mayor peso en el negocio.
 
-
-
+### 6. 
 
 
 
