@@ -1,11 +1,11 @@
 ![IMAGEN](./picture/baneer%20vertical.png)
 
-# Proyecto SQL: Analisís de ventas de Walmart
+# Proyecto SQL: Analisís de Ventas de Walmart
 
 ## Introducción
-El presente proyecto tiene como objetivo analizar las ventas de Walmart, una de las principales empresas minoristas a nivel mundial, durante el período 05/02/2010 al 26/10/2012, utilizando SQL en Databricks para identificar tendencias y obtener insights relevantes.
+El presente proyecto tiene como objetivo analizar las ventas de **Walmart**, una de las principales empresas minoristas a nivel mundial, durante el período 05/02/2010 al 26/10/2012, utilizando **SQL** dentro de **Databricks** para identificar tendencias y obtener insights relevantes.
 
-## Estructura del Proyecto
+## Sobre los datos
 
 Los datos originales, junto con la información correspondiente a cada una de las columnas, están disponibles en este enlace de [Kaggle](https://www.kaggle.com/datasets/mikhail1681/walmart-sales).
 
@@ -67,6 +67,24 @@ Se realizará la limpieza y validación de los datos para garantizar que estén 
     FROM walmart_sales.default.walmart_sales;
     ```
     ![IMAGEN](./picture/04.%20Verificar%20si%20hay%20datos%20NULOS.png)
+
+## Tareas (Task)
+
+En este análisis se busca responder lo siguiente:
+
+-1. *Estructura*: 
+-2. **
+-3. **
+-4. **
+-5. **
+-6. **
+-7. **
+-8. **
+-9. **
+-10. **
+
+
+
 
 ## Análisis de Datos - Walmart_Sales.csv
 
