@@ -270,7 +270,95 @@ Se obtiene lo siguiente
 
 Por tanto, las semanas festivas presentan en promedio ventas superiores.
 
-### 8. 
+### 8. Encontrar las semanas de mayor venta
+
+```sql
+WITH Weekly_Sales AS (
+  SELECT 
+    DATE,
+    SUM(Weekly_Sales) AS Total_Week_Sales
+  FROM walmart_sales.default.walmart_sales
+  GROUP BY Date
+),
+Rank_Weeks as (
+  select 
+    DATE,
+    total_week_sales,
+    RANK() OVER (ORDER BY total_week_sales DESC) AS Rank_Sales
+FROM weekly_sales
+)
+select 
+  date,
+  round(total_week_sales,2) AS Sales_Week,
+  rank_sales
+FROM rank_weeks
+WHERE rank_sales <= 10;
+```
+![IMAGEN](./picture/12.%20Encontrar%20las%20semanas%20de%20mayor%20venta.png)
+
+En la base de datos aparecen como semanas especialmente fuertes:
+
+  - 24-12-2010
+  - 23-12-2011
+  - 25-11-2011
+  - 26-11-2010
+
+Las mayores ventas están fuertemente concentradas alrededor de periodos comerciales/festivos como Navidad y Black Friday.
+
+### 9. Ventas promedio según nivel de desempleo:
+
+¿Las tiendas presentan diferentes niveles de ventas cuando el desempleo es bajo, medio o alto?
+
+Primero analicemos cuanto ha sido el nivel máximo, mínimo y promedio de desempleo:
+
+```sql
+select 
+  ROUND(MAX(unemployment),2) as MAX_UNE,
+  ROUND(min(unemployment),2) as MIN_UNE,
+  ROUND(avg(unemployment),2) as AVG_UNE
+from walmart_sales.default.walmart_sales;
+```
+![IMAGEN](./picture/13.%20MAX,%20MIN,%20AVG%20UNEMPLOYMENT.png)
+
+
+Ahora, analicemos ventas de acuerdo al nivel de desempleo.
+
+```sql
+select
+  CASE
+    WHEN Unemployment < 7 THEN 'Low Unemployment'
+    WHEN Unemployment < 9 THEN 'Medium Unemployment'
+    ELSE 'High Unemployment'
+  END AS Unemployment_Segment,
+  ROUND(AVG(Weekly_Sales), 2) AS avg_weekly_sales,
+  COUNT(*) AS Cant_Weeks
+from walmart_sales.default.walmart_sales
+GROUP BY
+    CASE
+        WHEN Unemployment < 7 THEN 'Low Unemployment'
+        WHEN Unemployment < 9 THEN 'Medium Unemployment'
+        ELSE 'High Unemployment'
+    END
+ORDER BY avg_weekly_sales DESC;
+```
+
+![IMAGEN](./picture/14.%20Analizando%20ventas%20de%20acuerdo%20al%20desempleo.png)
+
+Se puede tener como conclusiones:
+
+  - Las ventas semanales promedio tienden a ser menores cuando el nivel de desempleo es alto.
+  - Sin embargo, un nivel bajo de desempleo no necesariamente se traduce en mayores ventas semanales promedio.
+
+### 10. 
+
+
+
+
+
+
+
+
+
 
 
 
