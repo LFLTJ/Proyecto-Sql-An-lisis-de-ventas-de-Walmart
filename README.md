@@ -309,54 +309,71 @@ Las mayores ventas están fuertemente concentradas alrededor de periodos comerci
 
 ¿Las tiendas presentan diferentes niveles de ventas cuando el desempleo es bajo, medio o alto?
 
-Primero analicemos cuanto ha sido el nivel máximo, mínimo y promedio de desempleo:
-
 ```sql
+with unemployment_stats as (
+  select 
+    ROUND(MAX(unemployment),2) as MAX_UNE,
+    ROUND(min(unemployment),2) as MIN_UNE,
+    ROUND(avg(unemployment),2) as AVG_UNE
+  from walmart_sales.default.walmart_sales
+)
 select 
-  ROUND(MAX(unemployment),2) as MAX_UNE,
-  ROUND(min(unemployment),2) as MIN_UNE,
-  ROUND(avg(unemployment),2) as AVG_UNE
-from walmart_sales.default.walmart_sales;
-```
-![IMAGEN](./picture/13.%20MAX,%20MIN,%20AVG%20UNEMPLOYMENT.png)
-
-
-Ahora, analicemos ventas de acuerdo al nivel de desempleo.
-
-```sql
-select
   CASE
-    WHEN Unemployment < 7 THEN 'Low Unemployment'
-    WHEN Unemployment < 9 THEN 'Medium Unemployment'
-    ELSE 'High Unemployment'
-  END AS Unemployment_Segment,
-  ROUND(AVG(Weekly_Sales), 2) AS avg_weekly_sales,
-  COUNT(*) AS Cant_Weeks
-from walmart_sales.default.walmart_sales
-GROUP BY
-    CASE
-        WHEN Unemployment < 7 THEN 'Low Unemployment'
-        WHEN Unemployment < 9 THEN 'Medium Unemployment'
-        ELSE 'High Unemployment'
-    END
-ORDER BY avg_weekly_sales DESC;
+    WHEN Unemployment < (us.MIN_UNE + us.AVG_UNE) / 2 THEN 'Low Unemployment'
+    WHEN Unemployment < (us.MAX_UNE + us.AVG_UNE) / 2 THEN 'Medium Unemployment'
+    ELSE 'High Unemployment' 
+  END AS Unemployment_Level,
+  ROUND(avg(ws.Weekly_Sales),2) as Avg_Week_Sales,
+  Count(*) as Cant_Weeks
+from walmart_sales.default.walmart_sales ws
+cross join unemployment_stats us
+group by 
+  CASE
+    WHEN Unemployment < (us.MIN_UNE + us.AVG_UNE) / 2 THEN 'Low Unemployment'
+    WHEN Unemployment < (us.MAX_UNE + us.AVG_UNE) / 2 THEN 'Medium Unemployment'
+    ELSE 'High Unemployment' 
+  END
+order by avg_week_sales;
 ```
 
 ![IMAGEN](./picture/14.%20Analizando%20ventas%20de%20acuerdo%20al%20desempleo.png)
 
-Se puede tener como conclusiones:
+Se puede tener como conclusión a mayor nivel de desempleo, las ventas promedio semanales disminuyen.
 
-  - Las ventas semanales promedio tienden a ser menores cuando el nivel de desempleo es alto.
-  - Sin embargo, un nivel bajo de desempleo no necesariamente se traduce en mayores ventas semanales promedio.
+### 10. Ventas promedio según precio del combustible
 
-### 10. 
+¿Cómo se comportan las ventas cuando el precio del combustible es bajo, medio o alto?
 
+```SQL
+WITH Fuel_Stats AS (
+  SELECT
+    MIN(Fuel_Price) AS min_fp,
+    AVG(Fuel_Price) AS avg_fp,
+    MAX(Fuel_Price) AS max_fp
+  FROM walmart_sales.default.walmart_sales
+)
+SELECT
+    CASE
+        WHEN Fuel_Price < (s.min_fp + s.avg_fp) / 2 THEN 'Low Fuel Price'
+        WHEN Fuel_Price < (s.avg_fp + s.max_fp) / 2 THEN 'Medium Fuel Price'
+        ELSE 'High Fuel Price'
+    END AS fuel_price_level,
+    ROUND(AVG(Weekly_Sales), 2) AS avg_week_sales,
+    COUNT(*) AS Cant_Weeks
+FROM walmart_sales.default.walmart_sales
+CROSS JOIN Fuel_Stats s
+GROUP BY
+    CASE
+        WHEN Fuel_Price < (s.min_fp + s.avg_fp) / 2 THEN 'Low Fuel Price'
+        WHEN Fuel_Price < (s.avg_fp + s.max_fp) / 2 THEN 'Medium Fuel Price'
+        ELSE 'High Fuel Price'
+    END
+ORDER BY avg_week_sales DESC;
+```
 
+![IMAGEN](./picture/15.%20Ventas%20promedio%20según%20precio%20del%20combustible.png)
 
-
-
-
-
+A diferencia de la consulta anterior, a mayor precio del combustible, se registra un ligero incremento en las ventas semanales promedio.
 
 
 
