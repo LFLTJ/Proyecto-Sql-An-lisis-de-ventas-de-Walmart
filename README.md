@@ -42,11 +42,11 @@ En este análisis se busca responder lo siguiente:
   3. **Ranking de tiendas**: ¿Cuáles son las tiendas que generan más ingresos?
   4. **Ranking de tiendas - TOP 5**: ¿Cuál es la posición de cada tienda respecto a las demás?
   5. **Participación de cada tienda**: ¿Qué porcentaje de las ventas totales representa cada tienda?
-  6. **
-  7. **
-  8. **
-  9. **
- 10. **
+  6. **Variación Porcentual Mensual**: Para cada tienda, ¿cuánto aumentaron o disminuyeron las ventas respecto al mes anterior?
+  7. **Efecto de los Feriados**: ¿Las semanas festivas realmente generan mayores ventas?
+  8. **Semanas de mayores ventas**: ¿Qué semanas presentan mayores ventas?
+  9. **Ventas promedio según nivel de desempleo**: ¿Las tiendas presentan diferentes niveles de ventas cuando el desempleo es bajo, medio o alto?
+ 10. **Ventas promedio según precio del combustible**: ¿Cómo se comportan las ventas cuando el precio del combustible es bajo, medio o alto?
 
 ## Limpieza de datos
 Se realizará la limpieza y validación de los datos para garantizar que estén completos, consistentes y listos para el análisis.
@@ -270,7 +270,9 @@ Se obtiene lo siguiente
 
 Por tanto, las semanas festivas presentan en promedio ventas superiores.
 
-### 8. Encontrar las semanas de mayor venta
+### 8. Semanas de mayores ventas:
+
+¿Qué semanas presentan mayores ventas?
 
 ```sql
 WITH Weekly_Sales AS (
