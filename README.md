@@ -211,13 +211,41 @@ order by sales_percentage desc;
 
 Esto permite identificar qué tiendas tienen mayor peso en el negocio.
 
-### 6. 
+### 6. Variación Porcentual Mensual:
 
+Para cada tienda, ¿cuánto aumentaron o disminuyeron las ventas respecto al mes anterior?
 
+```Sql
+with Month_Sales as (
+  select 
+    Store,
+    year(Date) as Year,
+    month(Date) as Month,
+    SUM(Weekly_Sales) as Month_Sales
+  from walmart_sales.default.walmart_sales
+  group by Store, year, month
+), Pre_Month_Sale as (
+    select 
+      store,
+      year,
+      month,
+      month_sales,
+      lag(month_sales) over (partition by store order by year, month) as Pre_Month_Sale
+    from month_sales
+)
+select 
+  store,
+  year,
+  month, 
+  round (((month_sales - pre_month_sale) / pre_month_sale * 100),2) as month_growth_pct
+from pre_month_sale;
+```
 
+![IMAGEN](./picture/10.%20Variación%20mensual.png)
 
+Se calcula la tasa porcentual de crecimiento por cada tienda durante el periodo comprendido desde Febrero 2010 a Octubre 2012.
 
-
+### 7. 
 
 
 
