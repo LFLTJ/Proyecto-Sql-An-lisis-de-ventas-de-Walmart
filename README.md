@@ -267,6 +267,7 @@ Se obtiene lo siguiente
 
   - Promedio de venta semana normal = $ 1,041,256.38
   - Promedio de venta semana festiva = $ 1,122,887.89
+
 Por tanto, las semanas festivas presentan en promedio ventas superiores.
 
 ### 8. 
