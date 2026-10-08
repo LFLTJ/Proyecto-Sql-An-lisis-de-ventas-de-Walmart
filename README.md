@@ -182,7 +182,7 @@ LIMIT 5;
 
 ![IMAGEN](./picture/08.%20Ranking.png)
 
-### 5. Participación de cada tienda
+### 5. Participación de cada tienda:
 
 ¿Qué porcentaje de las ventas totales representa cada tienda?
 
@@ -245,14 +245,31 @@ from pre_month_sale;
 
 Se calcula la tasa porcentual de crecimiento por cada tienda durante el periodo comprendido desde Febrero 2010 a Octubre 2012.
 
-### 7. 
+### 7. Efecto de los Feriados:
 
+¿Las semanas festivas realmente generan mayores ventas?
 
+```SQL
+SELECT 
+  CASE
+    WHEN Holiday_Flag = 1 THEN 'Holiday'
+    ELSE 'Non-Holiday' END AS Period_Type,
+  COUNT(*) AS Observation,
+  ROUND(SUM(Weekly_Sales),2) AS Total_Sales,
+  ROUND(AVG(Weekly_Sales),2) AS Avg_Sales
+FROM walmart_sales.default.walmart_sales
+GROUP BY Holiday_Flag;
+```
 
+![IMAGEN](./picture/11.%20Feriados.png)
 
+Se obtiene lo siguiente
 
+  - Promedio de venta semana normal = $ 1,041,256.38
+  - Promedio de venta semana festiva = $ 1,122,887.89
+Por tanto, las semanas festivas presentan en promedio ventas superiores.
 
-
+### 8. 
 
 
 
