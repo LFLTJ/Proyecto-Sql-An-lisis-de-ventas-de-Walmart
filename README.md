@@ -157,7 +157,7 @@ order by total_sales desc;
 Conclusióm:
 
 - N° de Tienda con mayor ventas: N° 20
-- N° de Tienda con menoor ventas: N° 34
+- N° de Tienda con menor ventas: N° 34
 
 ### 4. Ranking de tiendas - TOP 5 (Utilizando funciones de ventana): 
 
@@ -377,15 +377,10 @@ ORDER BY avg_week_sales DESC;
 
 A diferencia de la consulta anterior, a mayor precio del combustible, se registra un ligero incremento en las ventas semanales promedio.
 
+## Conclusión:
 
-
-
-
-
-
-
-
-
-
-
-
+  - **Análisis de tiendas con bajo rendimiento**: Realizar un análisis de las tiendas con menores niveles de ventas (como la tienda N.° 34), tomando como referencia las buenas prácticas de las tiendas con mejor desempeño (como la tienda N.° 20). Evaluar factores externos e internos, tales como la ubicación, la variedad de productos ofrecidos, la competencia local y la gestión operativa, con el objetivo de identificar oportunidades de mejora y diseñar planes de acción que permitan incrementar las ventas y mejorar el rendimiento de las tiendas.
+  - **Programas durante las semanas regulares**: Para reducir la diferencia de ventas entre las semanas festivas y las habituales, es recomendable desarrollar estrategias comerciales intermedias, como ventas nocturnas, jornadas exclusivas para miembros y promociones estacionales, que permitan generar ingresos estables durante todo el año.
+  - **Optimización de inventario en temporadas festivas**: Dado que en campañas de Navidad y Black Firday presentan picos altos de facturación, Walmart debe anticipar la demanda, optimizando la logística y el personal para garantizar el stock suficiente de productos de alta demanda.
+  - **Estrategias comerciales en periodos de mayor desempleo**: Ante la caída en las ventas semanales durante periodos con mayor desempleo, se recomienda implementar campañas de promociones, descuentos y opciones de financiamiento en tiendas situadas en zonas de menor ingreso. Estas medidas. Estas medidas buscan mitigar el impacto de la reducción del poder adquisitivo y la mayor sensibilidad de los consumidores al precio.
+  - **Estrategia ante bajo impacto al precio del combustible**: Dado que el incremento en el precio del combustible no afecta negativamente el volumen de ventas, se recomienda mantener la oferta de productos y evitar descuentos innecesarios. Esta estrategia permitirá preservar los márgenes de rentabilidad, sin comprometer el desempeño comercial.
